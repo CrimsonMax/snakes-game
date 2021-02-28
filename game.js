@@ -1,14 +1,16 @@
-import { update as updateSnake, draw as drawSnake, SNAKE_SPEED, getSnakeHead, snakeIntersection } from './snake.js'
-import { update as updateRabbit, draw as drawRabbit } from './rabbits.js'
+import { update as updateSnake, draw as drawSnake, getSnakeHead, snakeIntersection } from './snake.js'
+import { update as updateRabbit, draw as drawRabbit, SNAKE_SPEED, score } from './rabbits.js'
 import { outSideGrid } from './grid.js'
+import { drawTrees } from './forest.js'
 
 let lastRenderTime = 0
 let gameOver = false
 const gameBoard = document.getElementById('game-board')
 
+
 function main(currentTime) {
   if (gameOver) { // game over screen
-    if (confirm('You Lost! Try again?')) {
+    if (confirm(`You ate ${score} rabbits! Try again?`)) {
       window.location = '/'
     } 
     return
@@ -36,9 +38,9 @@ function draw() {
   gameBoard.innerHTML = ''
   drawSnake(gameBoard)
   drawRabbit(gameBoard)
-  // tree!
+  drawTrees(gameBoard)
 }
 
 function checkDeath() {
-  gameOver = outSideGrid(getSnakeHead()) || snakeIntersection() // tree!
+  gameOver = outSideGrid(getSnakeHead()) || snakeIntersection()
 }

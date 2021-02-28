@@ -26,3 +26,8 @@ body {
   background-color: dimgray;
   border: 0.25vmin solid black;
 }
+
+.tree {
+  background-color: saddlebrown;
+  border: 0.25vmin solid black;
+}

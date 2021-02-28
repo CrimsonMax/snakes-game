@@ -1,13 +1,18 @@
+import { onTree } from "./forest.js"
 import { randomGridPosition } from "./grid.js"
-import { expandSnake, onSnake, SNAKE_SPEED } from "./snake.js"
+import { expandSnake, onSnake } from "./snake.js"
 
 let rabbit = getRandomRabbitPosition()
 const EXPANSION_RATE = 1
+export let SNAKE_SPEED = 5
+export let score = 0
 
 export function update() {
   if (onSnake(rabbit)) {
     expandSnake(EXPANSION_RATE)
-    rabbit = getRandomRabbitPosition() // increase speed
+    rabbit = getRandomRabbitPosition()
+    SNAKE_SPEED++
+    score++
   }
 }
 
@@ -21,7 +26,7 @@ export function draw(gameBoard) {
 
 function getRandomRabbitPosition() {
   let newRabbitPosition
-  while (newRabbitPosition == null || onSnake(newRabbitPosition)) { // tree!
+  while (newRabbitPosition == null || onSnake(newRabbitPosition) || onTree(newRabbitPosition)) {
     newRabbitPosition = randomGridPosition()
   }
   return newRabbitPosition
