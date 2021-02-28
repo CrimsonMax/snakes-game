@@ -31,3 +31,41 @@ body {
   background-color: saddlebrown;
   border: 0.25vmin solid black;
 }
+
+/* Winning message */
+
+.win-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(50, 49, 143, 0.9);
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 5rem;
+  flex-direction: column;
+  text-align: center;
+}
+
+.win-message button {
+  border-radius: 1em;
+  font-size: 3rem;
+  background-color: white;
+  border: 1px solid black;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+  outline: none;
+}
+
+.win-message button:hover {
+  background-color: firebrick;
+  color: white;
+  border-color: white;
+}
+
+.win-message.show {
+  display: flex;
+}
