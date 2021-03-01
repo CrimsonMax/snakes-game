@@ -7,6 +7,8 @@ const EXPANSION_RATE = 1
 export let SNAKE_SPEED = 5
 export let score = 0
 
+setInterval(() => rabbit = getRandomRabbitPosition(), 5000)
+
 export function update() {
   if (onSnake(rabbit)) {
     expandSnake(EXPANSION_RATE)
